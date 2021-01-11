@@ -9,17 +9,37 @@ import Services from './pages/services';
 import Contact from './pages/contact';
 import SignUp from './pages/signUp';
 import Banner from './components/Header/Banner';
+import PosterCard from './components/Card/PosterCard';
+import { Col, Container, Row } from 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <NavMenu />
-      <Banner></Banner>
+      <Banner />
+      <Container fluid className="px-4">
+        <Row>
+          <Col md={6}>
+            <PosterCard
+              imgUrl="/images/card.png"
+              title="Holiday Deals"
+              subTitle="UP to 30% off"
+            />
+          </Col>
+          <Col md={6}>
+            <PosterCard
+              imgUrl="/images/card2.png"
+              title="Just In"
+              subTitle="Top Headphone"
+            />
+          </Col>
+        </Row>
+      </Container>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
-        <Route path="/contact-us" component={Contact} />
+        <Route path="/contact" component={Contact} />
         <Route path="/signUp" component={SignUp} />
       </Switch>
     </Router>
