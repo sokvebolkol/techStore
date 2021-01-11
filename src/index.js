@@ -10,14 +10,16 @@ import Contact from './pages/contact';
 import SignUp from './pages/signUp';
 import Banner from './components/Header/Banner';
 import PosterCard from './components/Card/PosterCard';
-import { Col, Container, Row } from 'react-bootstrap';
+import SaleCard from './components/Card/SaleCard';
+import products from './data/Products';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <NavMenu />
       <Banner />
-      <Container fluid className="px-4">
+      <Container fluid className="px-4 bg-light">
         <Row>
           <Col md={6}>
             <PosterCard
@@ -33,6 +35,36 @@ ReactDOM.render(
               subTitle="Top Headphone"
             />
           </Col>
+        </Row>
+        <Row className="d-flex justify-content-center py-4 px-4 mx-1 bg-white">
+          <h3>Best Sellers</h3>
+        </Row>
+        <Row>
+          {products.map((product) => {
+            return (
+              <div className="px-3">
+                <SaleCard
+                  imgUrl={product.imgUrl}
+                  strike={product.strike}
+                  price={product.price}
+                  productName={product.productName}
+                />
+              </div>
+            );
+          })}
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <Button
+            style={{ width: '300px' }}
+            className="btn p-2 rounded-pill px-4 py-3"
+            variant="primary"
+            href="#"
+          >
+            View All List
+          </Button>
+        </Row>
+        <Row className="d-flex justify-content-center py-4 px-4 mx-1 bg-white">
+          <h3>Shop By Category</h3>
         </Row>
       </Container>
       <Switch>
