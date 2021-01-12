@@ -14,7 +14,7 @@ const Footer = () => {
     <>
       <Container
         fluid
-        className="d-none d-sm-block bg-light  fixed-bottom text-secondary py-4"
+        className="d-none d-sm-block bg-light text-secondary py-4"
       >
         <Container>
           <Row className="pt-4">
