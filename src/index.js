@@ -11,6 +11,7 @@ import SignUp from './pages/signUp';
 import Banner from './components/Header/Banner';
 import PosterCard from './components/Card/PosterCard';
 import SaleCard from './components/Card/SaleCard';
+import ShopByCategoryCard from './components/Card/ShopByCategoryCard';
 import products from './data/Products';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import Footer from './components/Footer';
@@ -54,7 +55,7 @@ ReactDOM.render(
             );
           })}
         </Row>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center my-4 py-4">
           <Button
             style={{ width: '300px' }}
             className="btn p-2 rounded-pill px-4 py-3"
@@ -64,8 +65,22 @@ ReactDOM.render(
             View All List
           </Button>
         </Row>
-        <Row className="d-flex justify-content-center py-4 px-4 mx-1 bg-white">
+        <Row className="d-flex justify-content-center py-4 px-4 my-4 mx-1 bg-white">
           <h3>Shop By Category</h3>
+        </Row>
+        <Row>
+          {products.map((product) => {
+            return (
+              <div className="px-3">
+                <ShopByCategoryCard
+                  imgUrl={product.imgUrl}
+                  strike={product.strike}
+                  price={product.price}
+                  productName={product.productName}
+                />
+              </div>
+            );
+          })}
         </Row>
       </Container>
       <Footer />
