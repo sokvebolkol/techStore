@@ -13,6 +13,7 @@ import PosterCard from './components/Card/PosterCard';
 import SaleCard from './components/Card/SaleCard';
 import products from './data/Products';
 import { Col, Container, Row, Button } from 'react-bootstrap';
+import Footer from './components/Footer';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -67,6 +68,7 @@ ReactDOM.render(
           <h3>Shop By Category</h3>
         </Row>
       </Container>
+      <Footer />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
