@@ -1,17 +1,74 @@
 import React from 'react';
 
+import PosterCard from '../components/Card/PosterCard';
+import SaleCard from '../components/Card/SaleCard';
+import ShopByCategoryCard from '../components/Card/ShopByCategoryCard';
+import products from '../data/Products';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 const Home = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh',
-      }}
-    >
-      <h1>Home</h1>
-    </div>
+    <Container fluid className="px-4 bg-light">
+      <Row>
+        <Col md={6}>
+          <PosterCard
+            imgUrl="/images/card.png"
+            title="Holiday Deals"
+            subTitle="UP to 30% off"
+          />
+        </Col>
+        <Col md={6}>
+          <PosterCard
+            imgUrl="/images/card2.png"
+            title="Just In"
+            subTitle="Top Headphone"
+          />
+        </Col>
+      </Row>
+      <Row className="d-flex justify-content-center py-4 px-4 mx-1 bg-white">
+        <h3>Best Sellers</h3>
+      </Row>
+      <Row>
+        {products.map((product) => {
+          return (
+            <div className="px-3">
+              <SaleCard
+                imgUrl={product.imgUrl}
+                strike={product.strike}
+                price={product.price}
+                productName={product.productName}
+              />
+            </div>
+          );
+        })}
+      </Row>
+      <Row className="d-flex justify-content-center my-4 py-4">
+        <Button
+          style={{ width: '300px' }}
+          className="btn p-2 rounded-pill px-4 py-3"
+          variant="primary"
+          href="#"
+        >
+          View All List
+        </Button>
+      </Row>
+      <Row className="d-flex justify-content-center py-4 px-4 my-4 mx-1 bg-white">
+        <h3>Shop By Category</h3>
+      </Row>
+      <Row>
+        {products.map((product) => {
+          return (
+            <div className="px-3">
+              <ShopByCategoryCard
+                imgUrl={product.imgUrl}
+                strike={product.strike}
+                price={product.price}
+                productName={product.productName}
+              />
+            </div>
+          );
+        })}
+      </Row>
+    </Container>
   );
 };
 
