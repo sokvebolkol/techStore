@@ -12,6 +12,10 @@ yarn create react-app my-app
 
 ## Available Scripts
 
+Installation dependencies
+
+### `yarn install`
+
 In the project directory, you can run:
 
 ### `yarn start`
