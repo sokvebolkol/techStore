@@ -1,0 +1,25 @@
+.zoomImageEffect {
+  overflow: hidden;
+  position: relative;
+}
+.zoomImageEffect:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.zoomImageEffect img {
+  transition: transform 0.25s;
+  width: 100%;
+}
+.zoomImageEffect:hover img {
+  transform: scale(1.2);
+}
+.zoomImageEffect:hover:after {
+  opacity: 0.2;
+}

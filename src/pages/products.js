@@ -6,7 +6,7 @@ import ShopByCategoryCard from '../components/Card/ShopByCategoryCard';
 import products from '../data/Products';
 import Banner from '../components/Header/Banner';
 import { Col, Container, Row, Button, Image } from 'react-bootstrap';
-const Home = () => {
+const Products = () => {
   return (
     <div>
       <Banner />
@@ -79,4 +79,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Products;
