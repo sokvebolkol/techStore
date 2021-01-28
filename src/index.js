@@ -12,10 +12,14 @@ import SignUp from './pages/signUp';
 
 import Footer from './components/Footer';
 
+const url = window.location.pathname;
+const navigationMenu = url === '/signUp' || url === '/login' ? '' : <NavMenu />;
+const footer = url === '/signUp' || url === '/login' ? '' : <Footer />;
+
 ReactDOM.render(
   <React.StrictMode>
+    {navigationMenu}
     <Router>
-      <NavMenu />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
@@ -24,7 +28,7 @@ ReactDOM.render(
         <Route path="/contact" component={Contact} />
         <Route path="/signUp" component={SignUp} />
       </Switch>
-      <Footer />
+      {footer}
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

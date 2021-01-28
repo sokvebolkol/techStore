@@ -33,7 +33,7 @@ const Home = () => {
         <Row>
           {products.map((product) => {
             return (
-              <div className="px-3">
+              <div className="px-3" key={product.id}>
                 <SaleCard
                   imgUrl={product.imgUrl}
                   strike={product.strike}
@@ -60,7 +60,7 @@ const Home = () => {
         <Row>
           {products.map((product) => {
             return (
-              <div className="px-3">
+              <div className="px-3" key={product.id}>
                 <ShopByCategoryCard
                   imgUrl={product.imgUrl}
                   strike={product.strike}

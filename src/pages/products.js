@@ -6,7 +6,7 @@ import ShopByCategoryCard from '../components/Card/ShopByCategoryCard';
 import products from '../data/Products';
 import Banner from '../components/Header/Banner';
 import { Col, Container, Row, Button, Image } from 'react-bootstrap';
-const Products = () => {
+const Product = () => {
   return (
     <div>
       <Banner />
@@ -33,7 +33,7 @@ const Products = () => {
         <Row>
           {products.map((product) => {
             return (
-              <div className="px-3">
+              <div className="px-3" key={product.id}>
                 <SaleCard
                   imgUrl={product.imgUrl}
                   strike={product.strike}
@@ -60,7 +60,7 @@ const Products = () => {
         <Row>
           {products.map((product) => {
             return (
-              <div className="px-3">
+              <div className="px-3" key={product.id}>
                 <ShopByCategoryCard
                   imgUrl={product.imgUrl}
                   strike={product.strike}
@@ -79,4 +79,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Product;
