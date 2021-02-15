@@ -8,6 +8,7 @@ import Product from './pages/products';
 import About from './pages/about';
 import Services from './pages/services';
 import Contact from './pages/contact';
+import Login from './pages/login';
 import SignUp from './pages/signUp';
 
 import Footer from './components/Footer';
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/products" component={Product} />
         <Route path="/services" component={Services} />
         <Route path="/contact" component={Contact} />
+        <Route path="/logIn" component={Login} />
         <Route path="/signUp" component={SignUp} />
       </Switch>
       {footer}

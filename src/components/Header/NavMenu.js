@@ -23,7 +23,7 @@ const NavMenu = () => {
             </Nav>
             <Nav>
               <Nav.Item className="px-2">
-                <Button variant="outline-success">Login</Button>
+                <Button href='login' variant="outline-success">Login</Button>
               </Nav.Item>
               <Nav.Item className="px-4">
                 <Button href="signUp" variant="outline-primary">
