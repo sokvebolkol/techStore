@@ -4,6 +4,7 @@ import { Col, Container, Row ,Form,Button} from 'react-bootstrap';
 
 const SignUp = () => {
   return (
+    // how to apply style on body without inharite 
     <Container>
       <Row className='p-4'>
         <Col md={3}></Col>

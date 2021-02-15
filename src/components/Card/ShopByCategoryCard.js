@@ -8,7 +8,7 @@ const ShopByCategoryCard = ({ imgUrl, strike, price, productName }) => {
       <div className="shadow-lg">
         <Card
           className="text-center zoomImageEffect"
-          style={{ width: '21.3rem' }}
+          style={{ width: '20.1rem' }}
         >
           <Card.Img variant="top" src={imgUrl} />
           <Card.Body className="pt-0">

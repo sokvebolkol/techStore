@@ -6,7 +6,7 @@ const SaleCard = ({ imgUrl, strike, price, productName }) => {
   return (
     <div className="py-4">
       <div className="shadow-lg">
-        <Card className="px-1 zoomImageEffect" style={{ width: '21.3rem' }}>
+        <Card className="px-1 zoomImageEffect" style={{ width: '20.1rem' }}>
           <Card.Img variant="top" src={imgUrl} />
           <Card.Body className="pt-0">
             <Card.Title style={{ position: 'relative', zIndex: '100' }}>
