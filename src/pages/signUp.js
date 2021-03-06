@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import "./backgroundSignInSignUp.css";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Formik, Form } from "formik";
+import { InputField } from "../components/Input/InputField";
+import { Container, Row, Col } from "react-bootstrap";
+import * as Yup from "yup";
 
 const SignUp = () => {
   useEffect(() => {
@@ -9,49 +12,80 @@ const SignUp = () => {
       document.body.classList.remove("bodyBackground"); // component unmound
     };
   }, []);
+
+  const validate = Yup.object({
+    firstName: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    lastName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    email: Yup.string().email("Email is invalid").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 charaters")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .required("Confirm password is required"),
+  });
+
   return (
-    // how to apply style on body without inharite
     <Container>
       <Row className="p-4">
         <Col md={3}></Col>
         <Col md={6} className="bg-white p-4 mt-4 rounded-lg">
-          <h3 className="text-center">Register</h3>
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>First name</Form.Label>
-              <Form.Control type="text" placeholder="Enter Firstname" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Last name</Form.Label>
-              <Form.Control type="text" placeholder="Enter Lastname" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="text" placeholder="Enter Email" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="text" placeholder="Password" />
-            </Form.Group>
-
-            <Button className="btn btn-dark btn-block" type="submit">
-              Register
-            </Button>
-            <div className="pt-2">
-              <a className="text-secondary pt-4" href="#">
-                Already Registered ?{" "}
-              </a>
-              <a className="text-primary" href="login">
-                {" "}
-                Login
-              </a>
-            </div>
-          </Form>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+              confirmPassword: "",
+            }}
+            validationSchema={validate}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {(formik) => (
+              <div>
+                <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
+                <Form>
+                  <InputField label="First Name" name="firstName" type="text" />
+                  <InputField label="Last Name" name="lastName" type="text" />
+                  <InputField label="Email" name="email" type="email" />
+                  <InputField
+                    label="Password"
+                    name="password"
+                    type="password"
+                  />
+                  <InputField
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                  />
+                  <button className="btn btn-dark mt-3" type="submit">
+                    Register
+                  </button>
+                  <button className="btn btn-danger mt-3 ml-3" type="reset">
+                    Reset
+                  </button>
+                  <div className="pt-2">
+                    <span className="text-secondary pt-4">
+                      Already Registered ?{" "}
+                    </span>
+                    <a className="text-primary" href=" login">
+                      Login
+                    </a>
+                  </div>
+                </Form>
+              </div>
+            )}
+          </Formik>
         </Col>
         <Col md={3}></Col>
       </Row>
     </Container>
   );
 };
-
 export default SignUp;

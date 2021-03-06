@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import "./backgroundSignInSignUp.css";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Formik, Form } from "formik";
+import { InputField } from "../components/Input/InputField";
+import { Container, Row, Col } from "react-bootstrap";
+import * as Yup from "yup";
 
 const Login = () => {
   useEffect(() => {
@@ -9,40 +12,70 @@ const Login = () => {
       document.body.classList.remove("bodyBackground"); // component unmound
     };
   }, []);
+
+  const validate = Yup.object({
+    firstName: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    lastName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    email: Yup.string().email("Email is invalid").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 charaters")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .required("Confirm password is required"),
+  });
+
   return (
-    <Container className="p-4">
-      <Row>
+    <Container>
+      <Row className="p-4">
         <Col md={3}></Col>
         <Col md={6} className="bg-white p-4 mt-4 rounded-lg">
-          <h3 className="text-center">Login</h3>
-          <Form className="p-4">
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="text" placeholder="Enter Email" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="text" placeholder="Password" />
-            </Form.Group>
-
-            <Button className="btn btn-dark btn-block" type="submit">
-              Login
-            </Button>
-            <div className="pt-2">
-              <a className="text-secondary pt-4" href="#">
-                Your forgot Password?{" "}
-              </a>
-              <a className="text-primary" href="signUp">
-                {" "}
-                Register
-              </a>
-            </div>
-          </Form>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+              confirmPassword: "",
+            }}
+            validationSchema={validate}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {(formik) => (
+              <div>
+                <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
+                <Form>
+                  <InputField label="Email" name="email" type="email" />
+                  <InputField
+                    label="Password"
+                    name="password"
+                    type="password"
+                  />
+                  <button className="btn btn-dark mt-3" type="submit">
+                    Login
+                  </button>
+                  <div className="pt-2">
+                    <span className="text-secondary pt-4">
+                      Already Registered ?{" "}
+                    </span>
+                    <a className="text-primary" href="signUp">
+                      Register
+                    </a>
+                  </div>
+                </Form>
+              </div>
+            )}
+          </Formik>
         </Col>
         <Col md={3}></Col>
       </Row>
     </Container>
   );
 };
-
 export default Login;
