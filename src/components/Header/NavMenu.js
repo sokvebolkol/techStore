@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navbar, Nav, Button, Image, Container } from 'react-bootstrap';
+import React from "react";
+import { Navbar, Nav, Button, Image, Container } from "react-bootstrap";
 
 const NavMenu = () => {
   return (
@@ -17,13 +17,14 @@ const NavMenu = () => {
             <Nav className="mr-auto pl-4">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="products">Products</Nav.Link>
-              <Nav.Link href="services">Services</Nav.Link>
               <Nav.Link href="about">About</Nav.Link>
               <Nav.Link href="contact">Contact</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Item className="px-2">
-                <Button href='login' variant="outline-success">Login</Button>
+                <Button href="login" variant="outline-success">
+                  Login
+                </Button>
               </Nav.Item>
               <Nav.Item className="px-4">
                 <Button href="signUp" variant="outline-primary">

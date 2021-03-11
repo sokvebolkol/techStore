@@ -45,7 +45,6 @@ const Footer = () => {
             <Col md={3} className="pt-2">
               <div className="d-flex flex-column h-100 border-right border-secondary">
                 <FooterItem>Products</FooterItem>
-                <FooterItem>Services</FooterItem>
                 <FooterItem>Blog</FooterItem>
               </div>
             </Col>
