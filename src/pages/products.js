@@ -60,9 +60,9 @@ const Product = () => {
           onClick={_handleGetProduct}
         >
           {isShowProducts ? (
-            <span> View More Products</span>
+            <span> View Less Products</span>
           ) : (
-            <span>View Less Products</span>
+            <span>View More Products</span>
           )}
         </Button>
       </Row>
